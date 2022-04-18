@@ -1,89 +1,88 @@
-// Starting of Program
-int m1a = 9;
-int m1b = 10;
-int m2a = 11;
-int m2b = 12;
-char val;
+int motorNo1 = 9;
+int motorNo2 = 10;
+int motorNo3 = 11;
+int motorNo4 = 12;
+
+char input;
 
 void setup() 
 {  
-pinMode(m1a, OUTPUT);  // Digital pin 10 set as output Pin
-pinMode(m1b, OUTPUT);  // Digital pin 11 set as output Pin
-pinMode(m2a, OUTPUT);  // Digital pin 12 set as output Pin
-pinMode(m2b, OUTPUT);  // Digital pin 13 set as output Pin
-Serial.begin(9600);
+    pinMode(motorNo1, OUTPUT);  
+    pinMode(motorNo2, OUTPUT); 
+    pinMode(motorNo3, OUTPUT);  
+    pinMode(motorNo4, OUTPUT);  
+    Serial.begin(9600);
 }
 
 void loop()
 {
-  while (Serial.available() > 0)
-  {
-  val = Serial.read();
-  Serial.println(val);
-  }
+    while (Serial.available() > 0)
+    {
+        input = Serial.read();
+        Serial.println(input);
+    }
 
-  if( val == 'F') // Forward
+    if (input == 'F') 
     {
-      digitalWrite(m1a, HIGH);
-      digitalWrite(m1b, LOW);
-      digitalWrite(m2a, HIGH);
-      digitalWrite(m2b, LOW);  
+        digitalWrite(motorNo1, HIGH);
+        digitalWrite(motorNo2, LOW);
+        digitalWrite(motorNo3, HIGH);
+        digitalWrite(motorNo4, LOW);  
     }
-  else if(val == 'B') // Backward
+    else if (input == 'B') 
     {
-      digitalWrite(m1a, LOW);
-      digitalWrite(m1b, HIGH);
-      digitalWrite(m2a, LOW);
-      digitalWrite(m2b, HIGH); 
+        digitalWrite(motorNo1, LOW);
+        digitalWrite(motorNo2, HIGH);
+        digitalWrite(motorNo3, LOW);
+        digitalWrite(motorNo4, HIGH); 
     }
-  
-    else if(val == 'L') //Left
+    else if (input == 'R') 
     {
-    digitalWrite(m1a, LOW);
-    digitalWrite(m1b, LOW);
-    digitalWrite(m2a, HIGH);
-    digitalWrite(m2b, LOW);
+        digitalWrite(motorNo1, HIGH);
+        digitalWrite(motorNo2, LOW);
+        digitalWrite(motorNo3, LOW);
+        digitalWrite(motorNo4, LOW); 
+    } 
+    else if (input == 'L')
+    {
+        digitalWrite(motorNo1, LOW);
+        digitalWrite(motorNo2, LOW);
+        digitalWrite(motorNo3, HIGH);
+        digitalWrite(motorNo4, LOW);
+    } 
+    else if (input == 'S') 
+    {
+        digitalWrite(motorNo1, LOW);
+        digitalWrite(motorNo2, LOW);
+        digitalWrite(motorNo3, LOW);
+        digitalWrite(motorNo4, LOW); 
     }
-    else if(val == 'R') //Right
+    else if (input == 'J')
     {
-    digitalWrite(m1a, HIGH);
-    digitalWrite(m1b, LOW);
-    digitalWrite(m2a, LOW);
-    digitalWrite(m2b, LOW); 
+        digitalWrite(motorNo1, LOW);
+        digitalWrite(motorNo2, HIGH);
+        digitalWrite(motorNo3, LOW);
+        digitalWrite(motorNo4, LOW);
     }
-    
-  else if(val == 'S') //Stop
+    else if (input == 'I') 
     {
-    digitalWrite(m1a, LOW);
-    digitalWrite(m1b, LOW);
-    digitalWrite(m2a, LOW);
-    digitalWrite(m2b, LOW); 
+        digitalWrite(motorNo1, HIGH);
+        digitalWrite(motorNo2, LOW);
+        digitalWrite(motorNo3, LOW);
+        digitalWrite(motorNo4, LOW);
     }
-  else if(val == 'I') //Forward Right
+    else if (input == 'H') 
     {
-    digitalWrite(m1a, HIGH);
-    digitalWrite(m1b, LOW);
-    digitalWrite(m2a, LOW);
-    digitalWrite(m2b, LOW);
+        digitalWrite(motorNo1, LOW);
+        digitalWrite(motorNo2, LOW);
+        digitalWrite(motorNo3, LOW);
+        digitalWrite(motorNo4, HIGH); 
     }
-  else if(val == 'J') //Backward Right
+    else if (input == 'G') 
     {
-    digitalWrite(m1a, LOW);
-    digitalWrite(m1b, HIGH);
-    digitalWrite(m2a, LOW);
-    digitalWrite(m2b, LOW);
-    }
-   else if(val == 'G') //Forward Left
-    {
-    digitalWrite(m1a, LOW);
-    digitalWrite(m1b, LOW);
-    digitalWrite(m2a, HIGH);     digitalWrite(m2b, LOW);
-    }
-  else if(val == 'H') //Backward Left
-    {
-    digitalWrite(m1a, LOW);
-    digitalWrite(m1b, LOW);
-    digitalWrite(m2a, LOW);
-    digitalWrite(m2b, HIGH); 
+        digitalWrite(motorNo1, LOW);
+        digitalWrite(motorNo2, LOW);
+        digitalWrite(motorNo3, HIGH);     
+        digitalWrite(motorNo4, LOW);
     }
 }
